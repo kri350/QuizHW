@@ -22,6 +22,31 @@ enum ResponseType {
 struct Answer {
     var text: String
     var type: AnimalType
+    
+    static func getResult(answers: [Answer]) -> AnimalType {
+       let resultCount = NSCountedSet()
+       for answer in answers {
+           if answer.type == .dog{
+               resultCount.add("dog")
+           } else if answer.type == .cat{
+               resultCount.add("cat")
+           } else if answer.type == .rabbit{
+               resultCount.add("rabbit")
+           } else {
+               resultCount.add("turtle")
+           }
+       }
+       switch resultCount.count(for: ){
+       case _ where "dog" >= "cat" && "dog" >= "rabbit" && "dog" >= "turtle":
+           return AnimalType.dog
+       case _ where "cat" > "dog" && "cat" >= "rabbit" && "cat" >= "turtle":
+           return AnimalType.cat
+       case _ where "rabbit" > "cat" && "rabbit" > "dog" && "rabbit" >= "turtle":
+           return AnimalType.rabbit
+       default:
+           return AnimalType.turtle
+       }
+   }
 }
 
 enum AnimalType: Character {

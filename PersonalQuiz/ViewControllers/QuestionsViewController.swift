@@ -35,8 +35,6 @@ class QuestionsViewController: UIViewController {
             rangedSlider.value = answerCount / 2
         }
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
@@ -137,6 +135,13 @@ extension QuestionsViewController {
             updateUI()
             return
         }
+        
         performSegue(withIdentifier: "showResult", sender: nil)
+    }
+  
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let resultVC = segue.destination as? ResultViewController else { return }
+                resultVC.answersResult = answerChosen
     }
 }

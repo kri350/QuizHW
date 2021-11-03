@@ -9,15 +9,15 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
+    @IBOutlet var resultChar: UILabel!
+    @IBOutlet var resultDescription: UILabel!
+    var answersResult: [Answer] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        let animal = Answer.getResult(answers: answersResult)
+        resultChar.text = String(animal.rawValue)
+        resultDescription.text = animal.definition
     }
-
-    // 1. Передать сюда массив с ответами
-    // 2. Определить наиболее часто встречающийся тип животного
-    // 3. Отобразить результаты в соотвствии с этим животным
-    // 4. Избавиться от кнопки возврата назад на экране результатов
-    
+   
 }
+
