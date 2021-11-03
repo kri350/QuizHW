@@ -15,6 +15,7 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let animal = Answer.getResult(answers: answersResult)
+        print(animal)
         resultChar.text = String(animal.rawValue)
         resultDescription.text = animal.definition
     }

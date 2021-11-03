@@ -24,30 +24,33 @@ struct Answer {
     var type: AnimalType
     
     static func getResult(answers: [Answer]) -> AnimalType {
-       let resultCount = NSCountedSet()
-       for answer in answers {
-           if answer.type == .dog{
-               resultCount.add("dog")
-           } else if answer.type == .cat{
-               resultCount.add("cat")
-           } else if answer.type == .rabbit{
-               resultCount.add("rabbit")
-           } else {
-               resultCount.add("turtle")
-           }
-       }
-       switch resultCount.count(for: ){
-       case _ where "dog" >= "cat" && "dog" >= "rabbit" && "dog" >= "turtle":
-           return AnimalType.dog
-       case _ where "cat" > "dog" && "cat" >= "rabbit" && "cat" >= "turtle":
-           return AnimalType.cat
-       case _ where "rabbit" > "cat" && "rabbit" > "dog" && "rabbit" >= "turtle":
-           return AnimalType.rabbit
-       default:
-           return AnimalType.turtle
-       }
+        var dogs = 0
+        var cats = 0
+        var rabbits = 0
+        var turtles = 0
+
+        for answer in answers {
+            if answer.type == .dog{
+                dogs += 1
+                } else if answer.type == .cat{
+                    cats += 1
+                } else if answer.type == .rabbit{
+                    rabbits += 1
+                } else {
+                    turtles += 1
+                }
+        }
+        if dogs >= cats && dogs >= rabbits && dogs >= turtles {
+            return AnimalType.dog
+        } else if cats > dogs && cats >= rabbits && cats >= turtles {
+            return AnimalType.cat
+        } else if rabbits > cats && rabbits > dogs && rabbits >= turtles {
+            return AnimalType.rabbit
+        }else{
+            return AnimalType.turtle
+        }
+        }
    }
-}
 
 enum AnimalType: Character {
     case dog = "🐶"
